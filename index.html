@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskFlow | Student Task Manager</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">T</span><span>TaskFlow</span></div>
+    <p class="tagline">A little more organised, every day.</p>
+  </header>
+
+  <main class="container">
+    <section class="welcome">
+      <div>
+        <p class="eyebrow">STUDENT PLANNER</p>
+        <h1>My tasks</h1>
+        <p class="muted">Keep track of assignments, records and deadlines in one place.</p>
+      </div>
+      <div class="today" id="todayLabel"></div>
+    </section>
+
+    <section class="stats" aria-label="Task summary">
+      <article class="stat-card">
+        <span class="stat-label">Total tasks</span>
+        <strong id="totalCount">0</strong>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">Pending</span>
+        <strong id="pendingCount">0</strong>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">Completed</span>
+        <strong id="completedCount">0</strong>
+      </article>
+    </section>
+
+    <section class="workspace">
+      <section class="panel form-panel">
+        <div class="panel-heading">
+          <h2 id="formHeading">Add a task</h2>
+          <p class="muted">Small steps still count.</p>
+        </div>
+        <form id="taskForm">
+          <label for="taskTitle">Task title</label>
+          <input id="taskTitle" name="taskTitle" type="text" maxlength="100" placeholder="e.g. Complete Java assignment" required>
+
+          <label for="taskSubject">Subject / category</label>
+          <input id="taskSubject" name="taskSubject" type="text" maxlength="50" placeholder="e.g. Java, DBMS, Project">
+
+          <div class="form-row">
+            <div>
+              <label for="taskDue">Due date</label>
+              <input id="taskDue" name="taskDue" type="date">
+            </div>
+            <div>
+              <label for="taskPriority">Priority</label>
+              <select id="taskPriority" name="taskPriority">
+                <option value="Normal">Normal</option>
+                <option value="High">High</option>
+                <option value="Low">Low</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button class="button primary" id="saveButton" type="submit">Add task</button>
+            <button class="button secondary hidden" id="cancelEdit" type="button">Cancel</button>
+          </div>
+          <p class="form-note">Your tasks are saved in this browser on this device.</p>
+        </form>
+      </section>
+
+      <section class="panel tasks-panel">
+        <div class="tasks-heading">
+          <div>
+            <h2>My list</h2>
+            <p class="muted">Check things off as you go.</p>
+          </div>
+          <button id="clearCompleted" class="text-button" type="button">Clear completed</button>
+        </div>
+
+        <div class="filters" role="group" aria-label="Filter tasks">
+          <button class="filter active" data-filter="all" type="button">All</button>
+          <button class="filter" data-filter="pending" type="button">Pending</button>
+          <button class="filter" data-filter="completed" type="button">Completed</button>
+        </div>
+
+        <div id="taskList" class="task-list"></div>
+        <div id="emptyState" class="empty-state">
+          <div class="empty-icon">✓</div>
+          <h3>No tasks here yet</h3>
+          <p>Add your first task using the form.</p>
+        </div>
+      </section>
+    </section>
+    <footer>Made for student life · TaskFlow</footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
